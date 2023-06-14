@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Base de datos MongoDB</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Realiza una solicitud GET al servidor para obtener los datos de la base de datos
+      $.get('http://localhost:3000', function(data) {
+        // Manipula los datos recibidos como desees
+        var apellidos = data.map(function(usuario) {
+          return usuario.apellido;
+        });
+
+        // Crea un elemento de lista (<ul>) y agrega los apellidos como elementos de lista (<li>)
+        var ul = document.createElement('ul');
+        apellidos.forEach(function(apellido) {
+          var li = document.createElement('li');
+          li.textContent = apellido;
+          ul.appendChild(li);
+        });
+
+        // Agrega la lista al cuerpo del HTML
+        document.body.appendChild(ul);
+      });
+    });
+  </script>
+</head>
+<body>
+  <!-- Contenido del cuerpo del HTML -->
+</body>
+</html>
+
